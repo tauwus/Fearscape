@@ -10,17 +10,16 @@ public class PuzzleLockPad : MonoBehaviour
     public Button[] numberButtons;  // 9 number buttons
     public Button submitButton;     // Submit button
     public GameObject lockedObject; // Object to be destroyed
-
     private List<int> activeButtons = new List<int>(); // Store active buttons
-    private string correctCode = "1234";
+    public string correctCode = "1234";
     private Color defaultColor;
     private Color activeColor = Color.green;
 
     void Start()
     {
-        puzzlePanel.SetActive(false);
-        triggerPanel.SetActive(false);
-        errorPanel.SetActive(false);
+        if (puzzlePanel) puzzlePanel.SetActive(false);
+        if (triggerPanel) triggerPanel.SetActive(false);
+        if (errorPanel) errorPanel.SetActive(false);
 
         defaultColor = numberButtons[0].GetComponent<Image>().color; // Get default button color
 
@@ -34,7 +33,7 @@ public class PuzzleLockPad : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && triggerPanel)
         {
             triggerPanel.SetActive(true);
         }
@@ -42,19 +41,19 @@ public class PuzzleLockPad : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && triggerPanel)
         {
             triggerPanel.SetActive(false);
-            puzzlePanel.SetActive(false);
+            if (puzzlePanel) puzzlePanel.SetActive(false);
         }
     }
 
     void Update()
     {
-        if (triggerPanel.activeSelf && Input.GetKeyDown(KeyCode.E))
+        if (triggerPanel && triggerPanel.activeSelf && Input.GetKeyDown(KeyCode.E))
         {
             triggerPanel.SetActive(false);
-            puzzlePanel.SetActive(true);
+            if (puzzlePanel) puzzlePanel.SetActive(true);
             Time.timeScale = 0; // Stop time when puzzle panel is active
         }
     }
@@ -83,23 +82,32 @@ public class PuzzleLockPad : MonoBehaviour
         if (enteredCode == correctCode)
         {
             Destroy(lockedObject);
-            puzzlePanel.SetActive(false);
-            Destroy(triggerPanel);  
+            if (puzzlePanel) puzzlePanel.SetActive(false);
+            if (triggerPanel) triggerPanel.SetActive(false); // Disable before destroying
+            Invoke("DestroyTriggerPanel", 0.1f); // Small delay before destroying
             ClosePuzzle();
         }
         else
         {
-            errorPanel.SetActive(true);
-            Invoke("HideErrorPanel", 2f);
+            if (errorPanel)
+            {
+                errorPanel.SetActive(true);
+                Invoke("HideErrorPanel", 2f);
+            }
             ResetButtons();
         }
     }
 
+    void DestroyTriggerPanel()
+    {
+        if (triggerPanel) Destroy(triggerPanel);
+    }
+
     void ClosePuzzle()
-{
-    puzzlePanel.SetActive(false);
-    Time.timeScale = 1; // Resume time after solving the puzzle
-}
+    {
+        if (puzzlePanel) puzzlePanel.SetActive(false);
+        Time.timeScale = 1; // Resume time after solving the puzzle
+    }
 
     void ResetButtons()
     {
@@ -112,6 +120,6 @@ public class PuzzleLockPad : MonoBehaviour
 
     void HideErrorPanel()
     {
-        errorPanel.SetActive(false);
+        if (errorPanel) errorPanel.SetActive(false);
     }
 }
