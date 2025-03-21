@@ -2016,7 +2016,8 @@ MonoBehaviour:
   masterMixer: {fileID: 24100000, guid: 84adaed59cc6e61498888a20c012a7e4, type: 2}
   musicSlider: {fileID: 0}
   sfxSlider: {fileID: 0}
-  musicSources: []
+  musicSources:
+  - {fileID: 0}
   sfxSources: []
 --- !u!114 &1704940055
 MonoBehaviour:
