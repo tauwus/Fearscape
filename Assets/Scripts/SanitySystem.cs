@@ -8,24 +8,38 @@ public class SanitySystem : MonoBehaviour
     public float maxSanity = 100f;
     private float currentSanity;
     private float sanityDecreaseRate = 3f;
-    public TMP_Text sanityText; 
-    public GameObject warningPanel; 
+    public TMP_Text sanityText;
+    public GameObject warningPanel;
+    private Rigidbody2D rb;
 
     void Start()
     {
         currentSanity = maxSanity;
+        rb = GetComponent<Rigidbody2D>();
+
+        if (rb == null)
+        {
+            Debug.LogError("No Rigidbody2D found on Player! Knockback will not work.");
+        }
+
         InvokeRepeating("DecreaseSanity", 1f, 1f);
         UpdateSanityText();
+
         if (warningPanel != null)
         {
-            warningPanel.SetActive(false); // Ensure the panel is initially hidden
+            warningPanel.SetActive(false);
         }
     }
 
     void DecreaseSanity()
     {
-        currentSanity -= sanityDecreaseRate;
-        currentSanity = Mathf.Max(currentSanity, 0); // Prevent sanity from going below 0
+        DrainSanity(sanityDecreaseRate);
+    }
+
+    public void DrainSanity(float amount, Vector2? knockbackDirection = null, float knockbackForce = 10f)
+    {
+        currentSanity -= amount;
+        currentSanity = Mathf.Max(currentSanity, 0);
         UpdateSanityText();
 
         if (currentSanity <= 25)
@@ -35,7 +49,15 @@ public class SanitySystem : MonoBehaviour
 
         if (currentSanity <= 0)
         {
-            SceneManager.LoadScene("GameOver"); // Or trigger insanity effects
+            SceneManager.LoadScene("GameOver");
+        }
+
+        // Apply knockback if direction is provided
+        if (knockbackDirection.HasValue && rb != null)
+        {
+            Debug.Log("Applying knockback in direction: " + knockbackDirection.Value);
+            rb.linearVelocity = Vector2.zero; // Stop any current movement before applying force
+            rb.AddForce(knockbackDirection.Value * knockbackForce, ForceMode2D.Impulse);
         }
     }
 

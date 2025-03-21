@@ -55,6 +55,7 @@ public class PuzzleLockPad : MonoBehaviour
         {
             triggerPanel.SetActive(false);
             puzzlePanel.SetActive(true);
+            Time.timeScale = 0; // Stop time when puzzle panel is active
         }
     }
 
@@ -83,6 +84,8 @@ public class PuzzleLockPad : MonoBehaviour
         {
             Destroy(lockedObject);
             puzzlePanel.SetActive(false);
+            Destroy(triggerPanel);  
+            ClosePuzzle();
         }
         else
         {
@@ -91,6 +94,12 @@ public class PuzzleLockPad : MonoBehaviour
             ResetButtons();
         }
     }
+
+    void ClosePuzzle()
+{
+    puzzlePanel.SetActive(false);
+    Time.timeScale = 1; // Resume time after solving the puzzle
+}
 
     void ResetButtons()
     {
