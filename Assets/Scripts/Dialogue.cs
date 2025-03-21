@@ -11,6 +11,7 @@ public class Dialogue : MonoBehaviour
     public float textSpeed = 0.05f;
     public float lineWaitTime = 1.0f;
 
+    public string sceneName; // Made public to allow changing in the Inspector
     private int index;
 
     // Start is called before the first frame update
@@ -88,17 +89,13 @@ public class Dialogue : MonoBehaviour
 
     void ChangeScene()
     {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        int nextSceneIndex = currentSceneIndex + 1;
-
-        // Check if the next scene index is within the valid range
-        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+        if (!string.IsNullOrEmpty(sceneName))
         {
-            SceneManager.LoadScene(nextSceneIndex);
+            SceneManager.LoadScene(sceneName);
         }
         else
         {
-            Debug.LogWarning("Next scene index is out of bounds!");
+            Debug.LogWarning("Scene name is not set!");
         }
     }
 }

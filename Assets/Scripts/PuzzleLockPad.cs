@@ -14,6 +14,7 @@ public class PuzzleLockPad : MonoBehaviour
     public string correctCode = "1234";
     private Color defaultColor;
     private Color activeColor = Color.green;
+    private bool isPlayerInside = false; // Track if player is inside the trigger
 
     void Start()
     {
@@ -33,29 +34,49 @@ public class PuzzleLockPad : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && triggerPanel)
+        if (other.CompareTag("Player"))
         {
-            triggerPanel.SetActive(true);
+            isPlayerInside = true;
+            if (triggerPanel) triggerPanel.SetActive(true);
         }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && triggerPanel)
+        if (other.CompareTag("Player"))
         {
-            triggerPanel.SetActive(false);
-            if (puzzlePanel) puzzlePanel.SetActive(false);
+            isPlayerInside = false;
+            if (triggerPanel) triggerPanel.SetActive(false);
+            if (puzzlePanel) ClosePuzzle(); // Ensure puzzle closes when leaving
         }
     }
 
     void Update()
     {
-        if (triggerPanel && triggerPanel.activeSelf && Input.GetKeyDown(KeyCode.E))
+        if (isPlayerInside && Input.GetKeyDown(KeyCode.E))
         {
-            triggerPanel.SetActive(false);
-            if (puzzlePanel) puzzlePanel.SetActive(true);
-            Time.timeScale = 0; // Stop time when puzzle panel is active
+            if (puzzlePanel.activeSelf)
+            {
+                ClosePuzzle(); // Close panel if already open
+            }
+            else
+            {
+                OpenPuzzle(); // Open panel if closed
+            }
         }
+    }
+
+    void OpenPuzzle()
+    {
+        if (triggerPanel) triggerPanel.SetActive(false);
+        if (puzzlePanel) puzzlePanel.SetActive(true);
+        Time.timeScale = 0; // Stop time
+    }
+
+    void ClosePuzzle()
+    {
+        if (puzzlePanel) puzzlePanel.SetActive(false);
+        Time.timeScale = 1; // Resume time
     }
 
     void ToggleButton(Button btn)
@@ -83,8 +104,8 @@ public class PuzzleLockPad : MonoBehaviour
         {
             Destroy(lockedObject);
             if (puzzlePanel) puzzlePanel.SetActive(false);
-            if (triggerPanel) triggerPanel.SetActive(false); // Disable before destroying
-            Invoke("DestroyTriggerPanel", 0.1f); // Small delay before destroying
+            if (triggerPanel) triggerPanel.SetActive(false);
+            Invoke("DestroyTriggerPanel", 0.1f);
             ClosePuzzle();
         }
         else
@@ -101,12 +122,6 @@ public class PuzzleLockPad : MonoBehaviour
     void DestroyTriggerPanel()
     {
         if (triggerPanel) Destroy(triggerPanel);
-    }
-
-    void ClosePuzzle()
-    {
-        if (puzzlePanel) puzzlePanel.SetActive(false);
-        Time.timeScale = 1; // Resume time after solving the puzzle
     }
 
     void ResetButtons()
