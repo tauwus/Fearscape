@@ -56,7 +56,7 @@ public class Flashlight : MonoBehaviour
             bpmDecreaseTimer = 0f; // Reset timer
             if (sanitySystem != null)
             {
-                sanitySystem.DecreaseSanity(3); // Decrease BPM by exactly 3
+                sanitySystem.DecreaseSanity(2); // Decrease BPM by exactly 3
             }
         }
     }
