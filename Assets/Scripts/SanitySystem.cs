@@ -5,10 +5,10 @@ using System.Collections;
 
 public class SanitySystem : MonoBehaviour
 {
-    public float minSanity = 100f; // Starting BPM
-    public float maxSanity = 200f; // Max BPM before Game Over
+    public float minSanity = 100f; 
+    public float maxSanity = 200f; 
     private float currentSanity;
-    private float sanityIncreaseRate = 3f; // Increase instead of decrease
+    private float sanityIncreaseRate = 3f; 
     public TMP_Text sanityText;
     public GameObject warningPanel;
     private Rigidbody2D rb;
@@ -40,10 +40,10 @@ public class SanitySystem : MonoBehaviour
     public void IncreaseSanity(float amount, Vector2? knockbackDirection = null, float knockbackForce = 10f)
     {
         currentSanity += amount;
-        currentSanity = Mathf.Min(currentSanity, maxSanity); // Cap at 200 BPM
+        currentSanity = Mathf.Min(currentSanity, maxSanity); 
         UpdateSanityText();
 
-        if (currentSanity >= 175) // Warning at 175 BPM
+        if (currentSanity >= 175) 
         {
             StartCoroutine(ShowWarningPanel());
         }
@@ -53,7 +53,6 @@ public class SanitySystem : MonoBehaviour
             SceneManager.LoadScene("Game Over");
         }
 
-        // Apply knockback if direction is provided
         if (knockbackDirection.HasValue && rb != null)
         {
             Debug.Log("Applying knockback in direction: " + knockbackDirection.Value);
@@ -64,7 +63,7 @@ public class SanitySystem : MonoBehaviour
 
     public void DecreaseSanity(float amount)
     {
-        currentSanity = Mathf.Max(currentSanity - amount, minSanity); // Cannot go below 100 BPM
+        currentSanity = Mathf.Max(currentSanity - amount, minSanity); 
         UpdateSanityText();
     }
 

@@ -6,22 +6,26 @@ using TMPro;
 public class Flashlight : MonoBehaviour
 {
     private Light2D flashlight;
-    public Slider batterySlider;  // UI Slider to show battery level
-    public TMP_Text batteryCountText; // UI text to show spare batteries
+    public Slider batterySlider;  
+    public TMP_Text batteryCountText;
     public float batteryLife = 10f;
     private float currentBattery;
     private bool isFlashlightOn = false;
-    public int batteryCount = 0; // Spare batteries
-    private bool canToggle = true; // Prevent spamming
+    public int batteryCount = 0;
+    private bool canToggle = true;
+    private SanitySystem sanitySystem; // Reference to SanitySystem
 
     [Header("Audio Settings")]
     public AudioSource audioSource;
     public AudioClip turnOnSound;
     public AudioClip turnOffSound;
 
+    [System.Obsolete]
     void Start()
     {
         flashlight = GetComponent<Light2D>();
+        sanitySystem = FindObjectOfType<SanitySystem>(); // Get reference to SanitySystem
+
         if (flashlight == null)
         {
             Debug.LogError("No Light2D component found on Flashlight!");
@@ -35,7 +39,7 @@ public class Flashlight : MonoBehaviour
     {
         RotateTowardsMouse();
 
-        if (Input.GetMouseButtonDown(0) && canToggle) // Left mouse click to toggle flashlight
+        if (Input.GetMouseButtonDown(0) && canToggle) 
         {
             ToggleFlashlight();
         }
@@ -43,6 +47,10 @@ public class Flashlight : MonoBehaviour
         if (isFlashlightOn)
         {
             DrainBattery();
+            if (sanitySystem != null)
+            {
+                sanitySystem.DecreaseSanity(4);
+            }
         }
     }
 
@@ -69,7 +77,7 @@ public class Flashlight : MonoBehaviour
 
     void ToggleFlashlight()
     {
-        if (!canToggle) return; // Prevent spam clicking
+        if (!canToggle) return; 
 
         isFlashlightOn = !isFlashlightOn;
         flashlight.enabled = isFlashlightOn;
