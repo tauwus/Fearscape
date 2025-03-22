@@ -8,7 +8,7 @@ public class Flashlight : MonoBehaviour
     private Light2D flashlight;
     public Slider batterySlider;  
     public TMP_Text batteryCountText;
-    public float batteryLife = 10f;
+    public float batteryLife = 30f;
     private float currentBattery;
     private bool isFlashlightOn = false;
     public int batteryCount = 0;
