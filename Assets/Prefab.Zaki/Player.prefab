@@ -80,6 +80,22 @@ PrefabInstance:
       propertyPath: m_HorizontalAlignment
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2746140033200530096, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746140033200530096, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: dd742f73052b2bc42a82b516a6532761, type: 3}
+    - target: {fileID: 2746140033200530096, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: dd742f73052b2bc42a82b516a6532761, type: 3}
+    - target: {fileID: 2746140033200530096, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3829238298058441908, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
       propertyPath: m_SizeDelta.x
       value: 216.74
@@ -148,6 +164,10 @@ PrefabInstance:
       propertyPath: walkUpSprite
       value: 
       objectReference: {fileID: 1819617370142565189, guid: 9aea9ce113f7c28439c91bae2e8ee128, type: 3}
+    - target: {fileID: 4498559078821450227, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
+      propertyPath: footstepAudio
+      value: 
+      objectReference: {fileID: 6484965825761109203}
     - target: {fileID: 4498559078821450227, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
       propertyPath: walkDownSprite
       value: 
@@ -350,3 +370,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63ba38331443a65428fcae376a1d7942, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &6484965825761109203 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2746140033200530096, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
+  m_PrefabInstance: {fileID: 9215215585651869283}
+  m_PrefabAsset: {fileID: 0}

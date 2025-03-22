@@ -50,7 +50,7 @@ public class SanitySystem : MonoBehaviour
 
         if (currentSanity >= maxSanity) // Game Over at 200 BPM
         {
-            SceneManager.LoadScene("GameOver");
+            SceneManager.LoadScene("Game Over");
         }
 
         // Apply knockback if direction is provided

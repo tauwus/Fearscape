@@ -353,22 +353,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textComponent: {fileID: 1707006029}
   lines:
-  - 'Wawan berada di ruang kelas dan guru menjelaskan di depan, si Wawan merasa ngantuk
+  - "Wawan berada di ruang kelas dan guru menjelaskan di depan, si Wawan merasa ngantuk
     dan tertidur di kelas. Lalu Wawan terbangun di ruang kelasnya ketika waktu telah
     malam. Lampu di seluruh ruangan telah dimatikan kecuali lampu koridor yang menyala
     redup. Wawan adalah orang yang takut dengan gelap, jadi Wawan yang takut dengan
     gelap harus berusaha untuk keluar dari gedung sekolah dengan menuruni tangga
-    yang terkunci dengan pagar bersandi. '
-  - "Wawan sorang pelajar SMA yang sedang mendengarkan gurunya menjelaskan di kelas,
-    tiba tiba dia berguman \u201CHmm ngantuknih, tidur bentar ah..\u201D. Lalu tiba
-    tiba wawan terbangun di malam hari dengan keadaan semua kelas lampunya mati,
-    menyisakan lampu koridor yang menyala redup. Wawan berkata,  \u201CWaduh kok
-    udah malem, gak ada yang bangunin juga, gimana nih!, Tenang wawan jangan pingsan,
-    ayo coba lihat sekitar dulu\u201D, \u201Cseingatku ada senter di meja guru, ayo
-    coba cari\u201D."
+    yang terkWawan akhirnya berhasil membuka gerbang terakhir. \u201CAkhirnya keluar
+    juga, Kok bisa sih aku ketiduran di Kelas, Yaudah deh Ayo pulang sekarang\u201D.
+    [Wawan berlari keluar dari sekolah tempat mimpi buruk tadi terjadi]. Tiba-tiba
+    ruangan yang semula gelap berubah menjadi terang.unci dengan pagar bersandi. "
+  - "Wawan menyadari dirinya sudah berada di kelas. Waktu menunjukkan pukul 1 siang.
+    Beberapa temannya masih di kelas. Begitu ia melihat sekitar, Wawan menyadari
+    bahwa yang tadi terjadi selama ini hanyalah mimpi.\u201DHAH, Yang tadi itu cuma
+    mimpi?, Saus Tartar.\u201D"
   textSpeed: 0.05
   lineWaitTime: 1
-  sceneName: 
+  sceneName: Main Menu
 --- !u!114 &1598691600
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,89 +5,28 @@ using System.Collections.Generic;
 
 public class AudioSetting : MonoBehaviour
 {
-    public static AudioSetting Instance; // Singleton instance
-
-    public AudioMixer masterMixer;
-    public Slider musicSlider;
-    public Slider sfxSlider;
-
-    public List<AudioSource> musicSources = new List<AudioSource>(); // Dynamic list
-    public List<AudioSource> sfxSources = new List<AudioSource>();   // Dynamic list
+    private static AudioSetting instance;
+    public AudioSource audioSource; // 🎵 Assign the AudioSource
 
     void Awake()
     {
-        // Singleton pattern to ensure only one instance exists
-        if (Instance == null)
+        if (instance == null)
         {
-            Instance = this;
+            instance = this; // Set this as the instance
             DontDestroyOnLoad(gameObject); // Keep it across scenes
         }
         else
         {
-            Destroy(gameObject);
-            return;
+            Destroy(gameObject); // Prevent duplicates
         }
-    }
 
-    void Start()
-    {
-        LoadVolumeSettings();
-    }
+        if (audioSource == null)
+            audioSource = GetComponent<AudioSource>();
 
-    public void LoadVolumeSettings()
-    {
-        float savedMusicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.75f);
-        float savedSFXVolume = PlayerPrefs.GetFloat("SFXVolume", 0.75f);
-
-        musicSlider.value = savedMusicVolume;
-        sfxSlider.value = savedSFXVolume;
-
-        SetMusicVolume(savedMusicVolume);
-        SetSFXVolume(savedSFXVolume);
-    }
-
-    public void SetMusicVolume(float volume)
-    {
-        masterMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20);
-        PlayerPrefs.SetFloat("MusicVolume", volume);
-
-        foreach (AudioSource music in musicSources)
+        if (audioSource != null && !audioSource.isPlaying)
         {
-            if (music != null) music.volume = volume;
+            audioSource.loop = true; // Enable looping
+            audioSource.Play(); // Start playing
         }
-    }
-
-    public void SetSFXVolume(float volume)
-    {
-        masterMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
-        PlayerPrefs.SetFloat("SFXVolume", volume);
-
-        foreach (AudioSource sfx in sfxSources)
-        {
-            if (sfx != null) sfx.volume = volume;
-        }
-    }
-
-    public void RegisterAudioSource(AudioSource source, bool isMusic)
-    {
-        if (isMusic)
-        {
-            if (!musicSources.Contains(source))
-                musicSources.Add(source);
-        }
-        else
-        {
-            if (!sfxSources.Contains(source))
-                sfxSources.Add(source);
-        }
-    }
-
-    public void UnregisterAudioSource(AudioSource source)
-    {
-        if (musicSources.Contains(source))
-            musicSources.Remove(source);
-
-        if (sfxSources.Contains(source))
-            sfxSources.Remove(source);
     }
 }
