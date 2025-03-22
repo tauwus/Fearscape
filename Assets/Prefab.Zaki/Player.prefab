@@ -188,6 +188,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3399757961928777004}
+    - target: {fileID: 5394497854742695748, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
+      propertyPath: m_Color.a
+      value: 0.58431375
+      objectReference: {fileID: 0}
     - target: {fileID: 5787042578945297014, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
       propertyPath: m_Name
       value: Senter
