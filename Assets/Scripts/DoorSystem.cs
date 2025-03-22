@@ -21,7 +21,7 @@ public class DoorSystem : MonoBehaviour
 
     void Start()
     {
-        doorManager = FindObjectOfType<DoorManager>();
+        doorManager = FindFirstObjectByType<DoorManager>();
 
         // Set pintu dalam keadaan tertutup saat game dimulai
         closedDoorSprite.SetActive(true);
