@@ -12,6 +12,12 @@ public class Flashlight : MonoBehaviour
     private float currentBattery;
     private bool isFlashlightOn = false;
     public int batteryCount = 0; // Spare batteries
+    private bool canToggle = true; // Prevent spamming
+
+    [Header("Audio Settings")]
+    public AudioSource audioSource;
+    public AudioClip turnOnSound;
+    public AudioClip turnOffSound;
 
     void Start()
     {
@@ -29,7 +35,7 @@ public class Flashlight : MonoBehaviour
     {
         RotateTowardsMouse();
 
-        if (Input.GetMouseButtonDown(0)) // Left mouse click to toggle flashlight
+        if (Input.GetMouseButtonDown(0) && canToggle) // Left mouse click to toggle flashlight
         {
             ToggleFlashlight();
         }
@@ -63,8 +69,26 @@ public class Flashlight : MonoBehaviour
 
     void ToggleFlashlight()
     {
+        if (!canToggle) return; // Prevent spam clicking
+
         isFlashlightOn = !isFlashlightOn;
         flashlight.enabled = isFlashlightOn;
+
+        // Play sound effect
+        if (audioSource != null)
+        {
+            audioSource.clip = isFlashlightOn ? turnOnSound : turnOffSound;
+            audioSource.Play();
+        }
+
+        // Prevent spamming
+        canToggle = false;
+        Invoke(nameof(EnableToggle), 0.5f);
+    }
+
+    void EnableToggle()
+    {
+        canToggle = true;
     }
 
     void ChangeBattery()
