@@ -11,20 +11,18 @@ public class Dialogue : MonoBehaviour
     public float textSpeed = 0.05f;
     public float lineWaitTime = 1.0f;
 
-    public string sceneName; // Made public to allow changing in the Inspector
+    public string sceneName; 
     private int index;
 
-    // Start is called before the first frame update
     void Start()
     {
         textComponent.text = string.Empty;
         StartDialogue();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) // Left mouse button for the next line
+        if (Input.GetMouseButtonDown(0)) 
         {
             if (textComponent.text == lines[index])
             {
@@ -36,7 +34,7 @@ public class Dialogue : MonoBehaviour
                 textComponent.text = lines[index];
             }
         }
-        else if (Input.GetMouseButtonDown(1)) // Right mouse button for the previous line
+        else if (Input.GetMouseButtonDown(1)) 
         {
             if (index > 0)
             {

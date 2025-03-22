@@ -56,7 +56,7 @@ public class SanitySystem : MonoBehaviour
         if (knockbackDirection.HasValue && rb != null)
         {
             Debug.Log("Applying knockback in direction: " + knockbackDirection.Value);
-            rb.linearVelocity = Vector2.zero; // Stop movement before applying force
+            rb.linearVelocity = Vector2.zero; 
             rb.AddForce(knockbackDirection.Value * knockbackForce, ForceMode2D.Impulse);
         }
     }

@@ -49,7 +49,7 @@ public class Flashlight : MonoBehaviour
             DrainBattery();
             if (sanitySystem != null)
             {
-                sanitySystem.DecreaseSanity(4);
+                sanitySystem.DecreaseSanity(3);
             }
         }
     }

@@ -3,9 +3,9 @@ using System.Collections;
 
 public class Skeleton : MonoBehaviour
 {
-    public int bpmIncreaseAmount = 5; // Increase BPM instead of draining it
-    public GameObject warningPanel; // Assign this in the Inspector
-    private SpriteRenderer spriteRenderer; // Reference to the sprite renderer
+    public int bpmIncreaseAmount = 5; 
+    public GameObject warningPanel; 
+    private SpriteRenderer spriteRenderer; 
 
     private void Start()
     {
@@ -13,12 +13,12 @@ public class Skeleton : MonoBehaviour
 
         if (spriteRenderer != null)
         {
-            spriteRenderer.enabled = false; // Hide the skeleton initially
+            spriteRenderer.enabled = false;
         }
 
         if (warningPanel != null)
         {
-            warningPanel.SetActive(false); // Ensure it's hidden at start
+            warningPanel.SetActive(false);
         }
     }
 
@@ -28,13 +28,13 @@ public class Skeleton : MonoBehaviour
         {
             if (spriteRenderer != null)
             {
-                spriteRenderer.enabled = true; // Show the skeleton
+                spriteRenderer.enabled = true;
             }
 
             SanitySystem sanitySystem = other.GetComponent<SanitySystem>();
             if (sanitySystem != null)
             {
-                sanitySystem.IncreaseSanity(bpmIncreaseAmount); // Increase BPM
+                sanitySystem.IncreaseSanity(bpmIncreaseAmount); 
                 StartCoroutine(ShowWarningPanel());
             }
         }
@@ -46,7 +46,7 @@ public class Skeleton : MonoBehaviour
         {
             if (spriteRenderer != null)
             {
-                spriteRenderer.enabled = false; // Hide the skeleton when player leaves
+                spriteRenderer.enabled = false; 
             }
         }
     }
@@ -56,7 +56,7 @@ public class Skeleton : MonoBehaviour
         if (warningPanel != null)
         {
             warningPanel.SetActive(true);
-            yield return new WaitForSeconds(1f); // Show panel for 1 second
+            yield return new WaitForSeconds(1f);
             warningPanel.SetActive(false);
         }
     }
