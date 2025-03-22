@@ -14,6 +14,7 @@ public class Flashlight : MonoBehaviour
     public int batteryCount = 0;
     private bool canToggle = true;
     private SanitySystem sanitySystem; // Reference to SanitySystem
+    private float bpmDecreaseTimer = 0f; // Timer for BPM decrease
 
     [Header("Audio Settings")]
     public AudioSource audioSource;
@@ -37,22 +38,29 @@ public class Flashlight : MonoBehaviour
 
     void Update()
     {
-        RotateTowardsMouse();
+    RotateTowardsMouse();
 
-        if (Input.GetMouseButtonDown(0) && canToggle) 
-        {
-            ToggleFlashlight();
-        }
+    if (Input.GetMouseButtonDown(0) && canToggle) 
+    {
+        ToggleFlashlight();
+    }
 
-        if (isFlashlightOn)
+    if (isFlashlightOn)
+    {
+        DrainBattery();
+
+        // Reduce BPM exactly every 1 second
+        bpmDecreaseTimer += Time.deltaTime;
+        if (bpmDecreaseTimer >= 1f) // Check if 1 second has passed
         {
-            DrainBattery();
+            bpmDecreaseTimer = 0f; // Reset timer
             if (sanitySystem != null)
             {
-                sanitySystem.DecreaseSanity(3 * Time.deltaTime); 
+                sanitySystem.DecreaseSanity(3); // Decrease BPM by exactly 3
             }
         }
     }
+}
 
     void RotateTowardsMouse()
     {
