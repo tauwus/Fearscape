@@ -3,11 +3,12 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject settingsPanel; // Assign the settings panel in the Inspector
+    public GameObject settingsPanel;
+    public GameObject tutorialPanel;
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Prologue"); // Change to your scene name
+        SceneManager.LoadScene("Prologue"); 
     }
 
     public void OpenSettings()
@@ -23,6 +24,21 @@ public class MainMenu : MonoBehaviour
         if (settingsPanel != null)
         {
             settingsPanel.SetActive(false);
+        }
+    }
+
+    public void Opentutorial()
+    {
+        if (tutorialPanel != null)
+        {
+            tutorialPanel.SetActive(true);
+        }
+    }    
+    public void CloseTutorial()
+    {
+        if (tutorialPanel != null)
+        {
+            tutorialPanel.SetActive(false);
         }
     }
 

@@ -368,7 +368,7 @@ MonoBehaviour:
     coba cari\u201D."
   textSpeed: 0.05
   lineWaitTime: 1
-  sceneName: 
+  sceneName: Floor1
 --- !u!114 &1598691600
 MonoBehaviour:
   m_ObjectHideFlags: 0

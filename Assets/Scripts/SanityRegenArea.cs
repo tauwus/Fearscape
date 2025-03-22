@@ -3,8 +3,8 @@ using UnityEngine.Rendering.Universal;
 
 public class SanityRegenArea : MonoBehaviour
 {
-    public int restoreAmount = 5;
-    public float restoreInterval = 1f;
+    public int decreaseAmount = 5; // Decrease BPM instead of increasing it
+    public float decreaseInterval = 1f;
     private bool playerInside = false;
     private SanitySystem sanitySystem;
     private Light2D light2D;
@@ -29,7 +29,7 @@ public class SanityRegenArea : MonoBehaviour
             if (sanitySystem != null)
             {
                 playerInside = true;
-                InvokeRepeating("RestoreSanity", 0f, restoreInterval);
+                InvokeRepeating("DecreaseSanity", 0f, decreaseInterval);
             }
         }
     }
@@ -39,17 +39,17 @@ public class SanityRegenArea : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInside = false;
-            CancelInvoke("RestoreSanity");
+            CancelInvoke("DecreaseSanity");
         }
     }
 
-    private void RestoreSanity()
+    private void DecreaseSanity()
+{
+    if (playerInside && sanitySystem != null)
     {
-        if (playerInside && sanitySystem != null)
-        {
-            sanitySystem.RestoreSanity(restoreAmount);
-        }
+        sanitySystem.DecreaseSanity(decreaseAmount); // Call the correct method
     }
+}
 
     private void FlickerLight()
     {

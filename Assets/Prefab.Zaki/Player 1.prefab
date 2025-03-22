@@ -716,6 +716,22 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 3829238298058441908, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 222.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 3829238298058441908, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 86.0259
+      objectReference: {fileID: 0}
+    - target: {fileID: 3829238298058441908, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -848.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3829238298058441908, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 496.98257
+      objectReference: {fileID: 0}
     - target: {fileID: 3864258159236155484, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
       propertyPath: m_Intensity
       value: 0.05
@@ -772,9 +788,21 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 1.0519999
       objectReference: {fileID: 0}
+    - target: {fileID: 6838436786058616511, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
+      propertyPath: m_text
+      value: Dag Dig Dug
+      objectReference: {fileID: 0}
     - target: {fileID: 6944927495804267876, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7462092181001824492, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
+      propertyPath: m_fontSize
+      value: 45.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 7462092181001824492, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 45.68
       objectReference: {fileID: 0}
     - target: {fileID: 9165182204273116117, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
       propertyPath: m_Sprite

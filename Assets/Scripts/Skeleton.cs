@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Skeleton : MonoBehaviour
 {
-    public int sanityDrainAmount = 5;
+    public int bpmIncreaseAmount = 5; // Increase BPM instead of draining it
     public GameObject warningPanel; // Assign this in the Inspector
 
     private void Start()
@@ -21,7 +21,7 @@ public class Skeleton : MonoBehaviour
             SanitySystem sanitySystem = other.GetComponent<SanitySystem>();
             if (sanitySystem != null)
             {
-                sanitySystem.DrainSanity(sanityDrainAmount);
+                sanitySystem.IncreaseSanity(bpmIncreaseAmount); // Increase BPM
                 StartCoroutine(ShowWarningPanel());
             }
         }

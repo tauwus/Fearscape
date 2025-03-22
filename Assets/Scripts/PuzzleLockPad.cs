@@ -16,6 +16,8 @@ public class PuzzleLockPad : MonoBehaviour
     private Color activeColor = Color.green;
     private bool isPlayerInside = false; // Track if player is inside the trigger
 
+    public AudioSource puzzleAudioSource; // 🎵 Audio Source for puzzle sound
+
     void Start()
     {
         if (puzzlePanel) puzzlePanel.SetActive(false);
@@ -30,6 +32,12 @@ public class PuzzleLockPad : MonoBehaviour
         }
 
         submitButton.onClick.AddListener(SubmitCode);
+
+        if (puzzleAudioSource) 
+        {
+            puzzleAudioSource.loop = true; // Make sure it's set to loop
+            puzzleAudioSource.playOnAwake = false; // Ensure it doesn't start automatically
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -71,12 +79,22 @@ public class PuzzleLockPad : MonoBehaviour
         if (triggerPanel) triggerPanel.SetActive(false);
         if (puzzlePanel) puzzlePanel.SetActive(true);
         Time.timeScale = 0; // Stop time
+
+        if (puzzleAudioSource && !puzzleAudioSource.isPlaying)
+        {
+            puzzleAudioSource.Play(); // 🎵 Play looped audio when panel is open
+        }
     }
 
     void ClosePuzzle()
     {
         if (puzzlePanel) puzzlePanel.SetActive(false);
         Time.timeScale = 1; // Resume time
+
+        if (puzzleAudioSource && puzzleAudioSource.isPlaying)
+        {
+            puzzleAudioSource.Stop(); // 🎵 Stop audio when panel closes
+        }
     }
 
     void ToggleButton(Button btn)
