@@ -9,6 +9,8 @@ public class DoorSystem : MonoBehaviour
     public GameObject closedDoorSprite;
     public GameObject openDoorSprite;
     public BoxCollider2D closedDoorCollider;
+    public GameObject triggerPanel;
+    public GameObject panelLocked;
 
     private bool isPlayerNear = false;
     private bool isDoorOpen = false;
@@ -21,15 +23,11 @@ public class DoorSystem : MonoBehaviour
     {
         doorManager = FindObjectOfType<DoorManager>();
 
-        if (doorManager == null)
-        {
-            Debug.LogError("DoorManager tidak ditemukan di scene!");
-        }
-
         // Set pintu dalam keadaan tertutup saat game dimulai
         closedDoorSprite.SetActive(true);
         openDoorSprite.SetActive(false);
         closedDoorCollider.enabled = true;
+        triggerPanel.SetActive(false);
     }
 
     void Update()
@@ -39,6 +37,8 @@ public class DoorSystem : MonoBehaviour
             if (isLocked)
             {
                 Debug.Log("Pintu terkunci!");
+                if (triggerPanel) triggerPanel.SetActive(false); 
+                if (panelLocked) panelLocked.SetActive(true);
             }
             else
             {
@@ -83,7 +83,7 @@ public class DoorSystem : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerNear = true;
-            Debug.Log("Tekan 'E' untuk membuka/tutup pintu.");
+            if (triggerPanel) triggerPanel.SetActive(true);
         }
     }
 
@@ -92,6 +92,8 @@ public class DoorSystem : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerNear = false;
+            if (triggerPanel) triggerPanel.SetActive(false); 
+            if (panelLocked) panelLocked.SetActive(false);
         }
     }
 }
