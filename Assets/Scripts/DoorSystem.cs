@@ -14,6 +14,7 @@ public class DoorSystem : MonoBehaviour
 
     private bool isPlayerNear = false;
     private bool isDoorOpen = false;
+    private bool isInteracting = false;
 
     private DoorManager doorManager;
 
@@ -28,11 +29,12 @@ public class DoorSystem : MonoBehaviour
         openDoorSprite.SetActive(false);
         closedDoorCollider.enabled = true;
         triggerPanel.SetActive(false);
+        panelLocked.SetActive(false);
     }
 
     void Update()
     {
-        if (isPlayerNear && Input.GetKeyDown(interactKey))
+        if (isPlayerNear && Input.GetKeyDown(interactKey) && !isInteracting)
         {
             if (isLocked)
             {
@@ -49,6 +51,7 @@ public class DoorSystem : MonoBehaviour
 
     private IEnumerator ToggleDoorWithDelay()
     {
+        isInteracting = true;
         if (isDoorOpen)
         {
             doorManager?.PlayCloseSound();
@@ -76,6 +79,7 @@ public class DoorSystem : MonoBehaviour
         }
 
         isDoorOpen = !isDoorOpen;
+        isInteracting = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

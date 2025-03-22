@@ -384,7 +384,18 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      skelly (animasi optional)_0: -947211622896813401
+      skelly (animasi optional)_1: -8289253951073577501
+      skelly (animasi optional)_10: 1495573729890382837
+      skelly (animasi optional)_2: 305436392682260382
+      skelly (animasi optional)_3: -2752293609860346384
+      skelly (animasi optional)_4: -897526089138625223
+      skelly (animasi optional)_5: -3677039784018912873
+      skelly (animasi optional)_6: -141331798763509615
+      skelly (animasi optional)_7: 1674326609284402774
+      skelly (animasi optional)_8: -1383318997712660521
+      skelly (animasi optional)_9: 5002390855795313278
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
