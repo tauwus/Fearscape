@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 843263182065225611, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 859432613722839793, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
       propertyPath: m_SizeDelta.y
       value: -934.5181

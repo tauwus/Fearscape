@@ -716,6 +716,14 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2746140033200530096, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: dd742f73052b2bc42a82b516a6532761, type: 3}
+    - target: {fileID: 2746140033200530096, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: dd742f73052b2bc42a82b516a6532761, type: 3}
     - target: {fileID: 3829238298058441908, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
       propertyPath: m_SizeDelta.x
       value: 222.21
@@ -764,6 +772,10 @@ PrefabInstance:
       propertyPath: walkRightSprite
       value: 
       objectReference: {fileID: -2387674562029650687, guid: 9aea9ce113f7c28439c91bae2e8ee128, type: 3}
+    - target: {fileID: 4654698208851487151, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
+      propertyPath: maxSanity
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 6347662103679114399, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
