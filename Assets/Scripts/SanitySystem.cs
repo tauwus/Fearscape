@@ -48,7 +48,7 @@ public class SanitySystem : MonoBehaviour
             StartCoroutine(ShowWarningPanel());
         }
 
-        if (currentSanity >= maxSanity) // Game Over at 200 BPM
+        if (currentSanity >= maxSanity)
         {
             SceneManager.LoadScene("Game Over");
         }
