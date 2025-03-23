@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3399757961928777004}
+    - target: {fileID: 2005865170484062833, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
+      propertyPath: m_text
+      value: Resume
+      objectReference: {fileID: 0}
     - target: {fileID: 2336440127245055390, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
       propertyPath: m_Constraints
       value: 4
@@ -99,6 +103,10 @@ PrefabInstance:
     - target: {fileID: 2746140033200530096, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2860125354067383044, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
+      propertyPath: m_text
+      value: Main Menu
       objectReference: {fileID: 0}
     - target: {fileID: 3829238298058441908, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
       propertyPath: m_SizeDelta.x
@@ -159,6 +167,10 @@ PrefabInstance:
     - target: {fileID: 3864258159236155484, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
       propertyPath: 'm_ApplyToSortingLayers.Array.data[7]'
       value: 340586995
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477000603745877708, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4498559078821450227, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
       propertyPath: idleSprite
@@ -268,6 +280,10 @@ PrefabInstance:
       propertyPath: 'm_ApplyToSortingLayers.Array.data[7]'
       value: 340586995
       objectReference: {fileID: 0}
+    - target: {fileID: 6489488830425936117, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6523895794575612103, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
       propertyPath: m_Size.x
       value: 0.7108611
@@ -340,6 +356,10 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 1056360379687583361}
+    - target: {fileID: 8354427155007224635, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
+      propertyPath: batteryLife
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8354427155007224635, guid: b9f0b4210cad56a4ab5f2d5245218921, type: 3}
       propertyPath: turnOnSound
       value: 
